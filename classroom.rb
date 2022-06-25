@@ -8,6 +8,7 @@ class Classroom
   end
 
   def add_student(student)
-    @students << student
+    @students.push(student) unless @students.include?(student)
+    student.classroom = self unless @students.include?(student)
   end
 end
