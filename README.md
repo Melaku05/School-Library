@@ -1,6 +1,5 @@
 # School-Library
 
-
 > Description the project.
 
 ## Getting Started
