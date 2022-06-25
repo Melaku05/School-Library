@@ -1,4 +1,5 @@
 require './nameable'
+require './decorator'
 class Person < Nameable
   attr_reader :id
   attr_accessor :name, :age
@@ -15,7 +16,7 @@ class Person < Nameable
     of_age? || @parent_permission
   end
 
-  def correct_name?
+  def correct_name
     @name
   end
 
