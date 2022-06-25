@@ -1,9 +1,17 @@
 # School-Library
-
-
-> Description the project.
+In this project, I built school library app. used for the interaction between studet and teacher in school.
 
 ## Getting Started
+to run the project locally, clone the project using the command
+
+`git clone https://github.com/Melaku05/School-Library.git`
+
+cd School-Library
+
+install ruby
+open terminal or command promot, and type 
+irb
+ruby fllowed by the file name
 
 ## Authors .
 
