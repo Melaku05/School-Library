@@ -12,11 +12,11 @@ class Person < Nameable
     @parent_permission = parent_permission
     @rentals = []
   end
-  
+
   def add_rental(rental)
     @rentals << rental
   end
-  
+
   def can_use_service?
     of_age? || @parent_permission
   end
