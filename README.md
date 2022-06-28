@@ -23,6 +23,7 @@ ruby fllowed by the file name
 - Twitter: [@Melaku05](https://twitter.com/melaku)
 - LinkedIn: [melaku-eshetu](https://www.linkedin.com/in/melaku-eshetu/)
 
+
 👤 **Author2**
 
 <a href="https://github.com/AnicetFantomas" target="blank"><img align="center"
@@ -32,7 +33,6 @@ ruby fllowed by the file name
 - GitHub: [@AnicetFantomas](https://github.com/AnicetFantomas)
 - Twitter: [@FantomasAnicet](https://twitter.com/FantomasAnicet)
 - LinkedIn: [Anicet Murhula](https://www.linkedin.com/in/anicet-murhula/)
-
 
 ## 🤝 Contributing
 
