@@ -3,6 +3,10 @@ require './teacher'
 require './classroom'
 require './rental'
 require './book'
+require 'items'
+require 'create_rental'
+require 'create_person'
+require 'create_book'
 
 class App
   attr_reader :books, :people, :rentals
