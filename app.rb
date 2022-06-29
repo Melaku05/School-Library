@@ -1,60 +1,53 @@
 require './student'
 require './teacher'
-require './classroom'
-require './rental'
 require './book'
-require 'items'
-require 'create_rental'
-require 'create_person'
-require 'create_book'
+require './rental'
+require './list_items'
+require './create_rental'
+require './create_book'
+require './create_person'
+require './modules/load_data'
 
 class App
-  attr_reader :books, :people, :rentals
+  attr_accessor :books, :persons, :rentals
 
+  include LoadData
   def initialize
-    @books = []
-    @people = []
-    @rentals = []
+    @books = load_books
+    @persons = load_persons
+    @rentals = load_rentals(@persons, @books)
+    @list_items = ListItems.new
   end
 
-  def all_book
-    @books&.each do |book|
-      puts "[#{book.class}] - Title: #{book.title}, Author: #{book.author}"
-    end
+  def list_books
+    @list_items.show_books_list(@books)
   end
 
-  def all_person
-    @people&.each do |person|
-      puts "[#{person.class}] - Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
-    end
+  def list_persons
+    @list_items.show_persons_list(@persons)
   end
 
-  def all_rentals(id)
-    @people.each do |person|
-      next unless person.id == id
-
-      person.rentals.each do |rental|
-        puts "[#{rental.class}] - Book: #{rental.book.title}, Person: #{rental.person.name}, Date: #{rental.date}"
-      end
-    end
+  def create_student(age, name)
+    @persons << CreatePerson.new.create_student(age, name)
   end
 
-  def create_book(title:, author:)
-    @books << Book.new(title: title, author: author)
+  def create_teacher(age, name)
+    @persons << CreatePerson.new.create_teacher(age, name)
   end
 
-  def create_student(age:, name:, parent_permission: true, classroom: nil)
-    @people << Student.new(age: age, name: name, parent_permission: parent_permission, classroom: classroom)
+  def create_person
+    @persons << CreatePerson.new.create_person
   end
 
-  def create_teacher(specialization:, age:, name:, parent_permission: true)
-    @people << Teacher.new(specialization: specialization, age: age, name: name, parent_permission: parent_permission)
+  def create_book
+    @books << CreateBook.new.create_book
   end
 
-  def create_rental(book:, person:, date:)
-    @rentals << Rental.new(book: book, person: person, date: date)
+  def create_rental
+    @rentals << CreateRental.new.create_rental(list_books, list_persons, @persons, @books)
+  end
+
+  def list_rentals
+    @list_items.show_rentals_list(@rentals, @persons)
   end
 end
-
-app = App.new
-app.all_book
