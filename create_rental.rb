@@ -1,3 +1,5 @@
+require_relative 'rental'
+
 class CreateRental
   def list_book(list_books)
     list_books

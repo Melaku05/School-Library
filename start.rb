@@ -1,38 +1,50 @@
+require 'json'
 require './app'
+require './modules/save_data'
 
 class Start
+  include SaveData
   def initialize
     @app = App.new
   end
 
-  def check_input(app, input)
-    case input
-    when 1..2
-      list_options(app, input)
-    when 3..5
-      create_options(app, input)
+  # rubocop:disable Metrics/CyclomaticComplexity
+  def handle_input(option)
+    case option
+    when 1
+      @app.list_books
+    when 2
+      @app.list_persons
+    when 3
+      @app.create_person
+    when 4
+      @app.create_book
+    when 5
+      @app.create_rental
     when 6
-      person_info(app)
+      @app.list_rentals
     when 7
-      puts 'Goodbye!'
-      raise StopIteration
+      save_data(@app.books, @app.persons, @app.rentals)
+      puts 'Thank you for using School Library App'
+      exit
     else
-      puts "You input #{input}"
+      puts 'Please select an option'
     end
   end
+  # rubocop:enable Metrics/CyclomaticComplexity
 
   def run
     loop do
-      puts 'Please choose an option by entering a number'
-      puts '1 - List all books'
-      puts '2 - List all people'
-      puts '3 - Create a person'
-      puts '4 - Create a book'
-      puts '5 - Create a rental'
-      puts '6 - List all rentals for a given person id'
-      puts '7 - Exit'
-      input = gets.chomp.to_i
-      check_input(app, input)
+      puts 'Please choose an option by entering a number:'
+      puts '1. list all books'
+      puts '2. list all people'
+      puts '3. create a person (teacher or student)'
+      puts '4. create a book'
+      puts '5. create a rental'
+      puts '6. list all rentals for a given person id'
+      puts '7. Exit'
+      option = gets.chomp.to_i
+      handle_input(option)
     end
   end
 end

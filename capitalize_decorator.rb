@@ -1,7 +1,7 @@
 require './nameable'
 
 class CapitalizeDecorator < Nameable
-  def initialize(nameable)
+  def initialize(nameable = Nameable.new)
     super()
     @nameable = nameable
   end
