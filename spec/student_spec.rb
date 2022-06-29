@@ -19,12 +19,3 @@ describe 'Student' do
     expect(new_student.play_hooky).to eq("¯\(ツ)/¯")
   end
 end
-
-
-
-
-
-
-
-
-
